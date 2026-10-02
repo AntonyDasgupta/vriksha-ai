@@ -1,0 +1,38 @@
+# # Secrets — never commit your real API key
+# .env
+
+# # Python
+# __pycache__/
+# *.pyc
+# .pytest_cache/
+# venv/
+# .venv/
+
+# # Streamlit
+# .streamlit/
+
+# # OS
+# .DS_Store
+
+# # Editor
+# .vscode/
+
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+
+# Environment Variables / Secrets
+.env
+
+# Model Files (If larger than 100MB)
+# backend/models/plant_disease_model.pth
+
+# OS Files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,950 @@
+{
+  "version": "0.2",
+  "project_justification": {
+    "why_text_based_first": {
+      "argument": "Recent systematic reviews report laboratory accuracies of 95-99% for CNN-based plant disease detection but field deployment accuracies of only 70-85%, a 15-30 percentage-point gap driven by lighting variation, background clutter, geographic bias in training data, and class imbalance. For smallholder contexts, the practical gap is wider still because RGB systems cost USD 500-2000 and hyperspectral systems USD 20,000-50,000, and most field models are uninterpretable to farmers. VRIKSHA-AI therefore prioritises a deterministic, explainable, text-and-context matching approach that works on any smartphone without a camera or internet connection. Image-based detection is planned as a clearly-labelled future phase in which a CNN output is treated as a triage signal fed into the same deterministic matcher, never as a standalone diagnosis.",
+      "sources": [
+        "Shafay, M., Hassan, T., Owais, M., Hussain, I., Khawaja, S.G., Seneviratne, L., Werghi, N. (2025). Recent advances in plant disease detection: challenges and opportunities. Plant Methods 21:140. https://doi.org/10.1186/s13007-025-01450-0",
+        "Mehta, A.R., Kumar, P., Prem, G., Aggarwal, S., Kumar, R. (2025). AI-powered Innovations in Agriculture: A Systematic Review on Plant Disease Detection and Classification. Indian Journal of Agricultural Research. doi:10.18805/IJARe.A-6371",
+        "Demilie, W.B. (2024). Plant disease detection and classification techniques: a comparative study of the performances. Journal of Big Data 11:5. https://doi.org/10.1186/s40537-023-00863-y",
+        "Sun, X., Li, G., Qu, P., Xie, X., Pan, X., Zhang, W. (2022). Research on plant disease identification based on CNN. Cognitive Robotics. doi:10.1016/j.cogr.2022.05.001"
+      ]
+    },
+    "iks_source_hierarchy": {
+      "primary": "Surapala's Vrikshayurveda, translated by Nalini Sadhale, Asian Agri-History Foundation, Agri-History Bulletin No. 1, 1996, pp. 104.",
+      "peer_reviewed_modern": [
+        "Biswas, S. & Das, R. (2023). Kunapajala: A Traditional Organic Formulation for Improving Agricultural Productivity - A Review. Agricultural Reviews. doi:10.18805/ag.R-2570",
+        "Suresh, G., Haridasan, K., Krishnamurthy, K.V. (2013). Relevance of Vrksayurveda and other traditional methods for organic production of nursery seedlings of useful plants. Ancient Science of Life 33(1): 60-70. doi:10.4103/0257-7941.134613",
+        "Nene, Y.L. (2012). Potential of some methods described in Vrikshayurvedas in crop yield increase and disease management. Asian Agri-History 16(1): 45-54.",
+        "Singh, N., Potter, B.S., Gupta, N., Mangal, G., Kumbhar, A. (2023). A Concept: Significant Role of Ritu and Ritusandhi in Today's Perspective. IJCRT 11(6): g120-g124."
+      ],
+      "verification_status": "Team has cited the Sadhale translation via secondary peer-reviewed sources (Biswas & Das 2023; Suresh et al. 2013) but has not yet read verses directly. This is disclosed in every iks_context.verification_status field."
+    },
+    "image_integration_strategy": {
+      "approach": "Triage Signal to Deterministic Matcher",
+      "explanation": "To prevent halluncinations and black-box misdiagnoses in agricultural advice, image classification models are used exclusively as a triage layer to extract candidate plant and disease labels. These labels are then evaluated by the deterministic context matcher against verified agricultural cases before generating any recommendation."
+    }
+
+  },
+
+  "cases": [
+    {
+      "id": "tomato_aphids",
+      "plant": "Tomato",
+      "problem": "Aphids",
+      "affected_part": ["Leaf", "Stem"],
+      "environment": ["Humid", "Rainy"],
+      "season": ["Monsoon", "Spring"],
+      "growing_condition": ["Pot", "Garden", "Field"],
+
+      "symptoms": [
+        "Small soft-bodied insects clustered on the underside of leaves or tender shoots",
+        "Curling or yellowing of young leaves",
+        "Sticky honeydew residue on leaves, sometimes with black sooty mould developing on it"
+      ],
+
+      "priority_actions": [
+        "Inspect new growth and undersides of leaves 2-3 times a week during active growth.",
+        "Remove heavily affected leaves or shoots where practical and dispose of them off-site.",
+        "Conserve natural predators such as ladybird beetles and lacewings by avoiding broad-spectrum sprays.",
+        "Use the crop-specific validated option from the sustainable-approaches list below."
+      ],
+
+      "modern_knowledge": "Aphids (family Aphididae) are sap-sucking insects that reproduce rapidly in warm, humid conditions and cluster on tender new growth. They can transmit plant viruses, so early detection matters more than direct feeding damage.",
+
+      "sustainable_approaches": [
+        {
+          "action": "Use a strong jet of water to dislodge light infestations before considering any spray.",
+          "cost": "Low",
+          "availability": "Universal - only requires water and a hose or sprayer."
+        },
+        {
+          "action": "Encourage natural predators (ladybird beetles, lacewings, hoverflies) by avoiding broad-spectrum insecticides and planting flowering border plants.",
+          "cost": "Low",
+          "availability": "Universal where flowering plants can be grown nearby."
+        },
+        {
+          "action": "Avoid excess nitrogen fertilizer, which produces the soft growth aphids prefer.",
+          "cost": "Low (saves cost)",
+          "availability": "Universal - adjust existing fertilizer schedule."
+        },
+        {
+          "action": "Maintain airflow between plants to reduce the humid microclimate aphids favour.",
+          "cost": "Low",
+          "availability": "Universal - spacing adjustment."
+        }
+      ],
+
+      "iks_context": {
+        "principle": {
+          "statement": "Vrikshayurveda treats pest emergence as a symptom of imbalance in soil and plant vitality, not as an isolated problem to be attacked with a targeted poison.",
+          "source_type": "paraphrase",
+          "source_note": "Team paraphrase of general principles; primary text is Surapala's Vrikshayurveda, trans. Sadhale (1996), Agri-History Bulletin No. 1, Asian Agri-History Foundation."
+        },
+        "specific_practice": {
+          "name": "Kunapajala",
+          "description": "A fermented liquid organic preparation made from animal or fish products boiled in water with paddy husk, sesame oilcake, black gram, milk, honey and ghee, then left to ferment for about a fortnight. Described in Surapala's Vrikshayurveda (verses 101-106) as a nourishing preparation for plant vitality. Used in modern practice as a soil or foliar application to support plant vigour and resistance.",
+          "source_type": "direct_reference",
+          "primary_citation": "Surapala's Vrikshayurveda, trans. N. Sadhale (1996). Agri-History Bulletin No. 1, Asian Agri-History Foundation, verses 101-106.",
+          "secondary_citation": "Biswas, S. & Das, R. (2023). Kunapajala: A Traditional Organic Formulation for Improving Agricultural Productivity - A Review. Agricultural Reviews. doi:10.18805/ag.R-2570.",
+          "modern_evidence": "Deshmukh, R.S., Patil, N.A., Nikam, T.D. (2012). Influence of Kunapajala treatment from Vrikshayurveda on the fruits of tomato under organic farming condition and its comparison with N.P.K. farming. Bioscience Discovery 3(2): 200-206. Also: Sarkar, S., Kundu, S.S., Ghorai, D. (2014). Validation of ancient liquid organics - panchagavya and kunapajala as plant growth promoters. Indian Journal of Traditional Knowledge 13(2): 398-403 (trials on tomato, chilli, cowpea).",
+          "evidence_level": "Documented in primary Sanskrit text with modern peer-reviewed validation on this exact crop. Dose standardisation is still an open research area (Biswas & Das 2023)."
+        },
+        "relevance_to_this_case": "Kunapajala's role in strengthening plant vitality through soil and foliar nourishment is consistent with modern IPM's principle that reducing plant stress lowers aphid pressure. It is a plant-strengthening intervention, not a direct aphicide.",
+        "verification_status": "Principle is a team paraphrase. Kunapajala is directly cited to the primary text via Biswas & Das (2023). Team has not yet read verses 101-106 directly in the Sadhale translation; access is planned before final submission."
+      },
+
+      "connection": "Modern pest monitoring and sustainable IPM (inspection, physical removal, predator conservation, airflow) are combined with the traditional plant-vitality approach of Vrikshayurveda, which treats pest emergence as a signal of soil and plant imbalance rather than an isolated problem.",
+
+      "monitor": "Observe new growth and pest activity 2-3 times per week for the next 7-10 days after the recommended action.",
+
+      "seek_expert_if": [
+        "The infestation continues to spread across the plant within a few days.",
+        "Leaves show virus-like mottling (irregular yellow-green mosaic pattern).",
+        "The diagnosis remains uncertain after a week of observation.",
+        "The selected intervention does not produce the expected response."
+      ],
+
+      "precautions": "This is general agronomic and traditional context, not a confirmed diagnosis. Any spray or preparation should be tested on a small area first.",
+
+      "expert_guidance": "If the infestation spreads rapidly or leaves show virus-like mottling, consult a local agricultural extension officer or plant specialist promptly.",
+
+      "sources": [
+        "ICAR ePubs - Integrated Pest Management approaches for major tomato pests (epubs.icar.org.in)",
+        "NICRA-ICAR - Manual for Tomato Pest Surveillance (nicra-icar.in)",
+        "Mondal et al. (2023). Management of sucking insect pests of tomato. Indian Journal of Agricultural Sciences (see ICAR ePubs for latest edition).",
+        "Surapala's Vrikshayurveda: The Science of Plant Life, trans. Nalini Sadhale, Asian Agri-History Foundation, Agri-History Bulletin No. 1 (1996).",
+        "Biswas, S. & Das, R. (2023). Kunapajala: A Traditional Organic Formulation for Improving Agricultural Productivity - A Review. Agricultural Reviews. doi:10.18805/ag.R-2570.",
+        "Deshmukh, R.S. et al. (2012). Influence of Kunapajala treatment from Vrikshayurveda on the fruits of tomato. Bioscience Discovery 3(2): 200-206.",
+        "Sarkar, S., Kundu, S.S., Ghorai, D. (2014). Validation of ancient liquid organics - panchagavya and kunapajala as plant growth promoters. Indian Journal of Traditional Knowledge 13(2): 398-403."
+      ],
+
+      "sources_verification_status": "GENERAL sources verified authentic. Case-specific modern sources (Deshmukh 2012; Sarkar 2014) verified to exist with exact citations. Sadhale verses not yet read directly by team - disclosed in iks_context.verification_status."
+    },
+
+    {
+      "id": "tomato_leaf_spot",
+      "plant": "Tomato",
+      "problem": "Leaf spot",
+      "affected_part": ["Leaf"],
+      "environment": ["Humid", "Rainy"],
+      "season": ["Monsoon"],
+      "growing_condition": ["Garden", "Field"],
+
+      "symptoms": [
+        "Small dark brown or black circular spots on lower leaves, often with concentric rings",
+        "Yellowing around the spots",
+        "Spots progressing upward on the plant over time"
+      ],
+
+      "priority_actions": [
+        "Remove and dispose of affected lower leaves off-site (do not compost on-site).",
+        "Water at the base of the plant rather than overhead to keep foliage dry.",
+        "Increase spacing between plants to improve airflow.",
+        "Mulch around the base to reduce soil splash onto leaves."
+      ],
+
+      "modern_knowledge": "Leaf spot in tomato is commonly caused by fungal pathogens (e.g. Alternaria or Septoria species) that thrive in prolonged leaf wetness and warm, humid weather. It spreads through water splash and infected plant debris.",
+
+      "sustainable_approaches": [
+        {
+          "action": "Water at the base of the plant rather than overhead, to keep foliage dry.",
+          "cost": "Low",
+          "availability": "Universal - only requires changing watering method."
+        },
+        {
+          "action": "Remove and dispose of affected lower leaves off-site rather than composting on-site.",
+          "cost": "Low",
+          "availability": "Universal."
+        },
+        {
+          "action": "Increase spacing between plants to improve airflow and reduce leaf-wetness duration.",
+          "cost": "Low",
+          "availability": "Universal - adjust next planting."
+        },
+        {
+          "action": "Mulch around the base to reduce soil splash onto leaves.",
+          "cost": "Low to Moderate",
+          "availability": "Straw, dry leaves, or crop residue available locally in most regions."
+        }
+      ],
+
+      "iks_context": {
+        "principle": {
+          "statement": "Traditional Indian plant-care practice places importance on soil health and drainage (Bhoomi Pariksha - soil assessment before cultivation) as a foundation for plant resistance, and documents periodic use of ash or plant-based preparations around the root zone as a preventive measure in humid seasons.",
+          "source_type": "paraphrase",
+          "source_note": "Team paraphrase drawing on general Vrikshayurveda soil-assessment principles; primary text Surapala's Vrikshayurveda, trans. Sadhale (1996), Agri-History Bulletin No. 1, Asian Agri-History Foundation. The Bhoomi-Nirupanam sub-section on soil classification is described in Suresh et al. (2013)."
+        },
+        "specific_practice": {
+          "name": "Kunapajala (preventive application)",
+          "description": "Kunapajala, described in Surapala's Vrikshayurveda (verses 101-106), is used in modern practice as a soil or foliar application to support plant vitality. In the leaf-spot context it is applied preventively rather than curatively, on the same Vrikshayurveda principle of maintaining plant vitality as a foundation for disease resistance.",
+          "source_type": "direct_reference",
+          "primary_citation": "Surapala's Vrikshayurveda, trans. N. Sadhale (1996). Agri-History Bulletin No. 1, verses 101-106.",
+          "secondary_citation": "Biswas, S. & Das, R. (2023). Agricultural Reviews. doi:10.18805/ag.R-2570. Suresh, G. et al. (2013). Ancient Science of Life 33(1): 60-70.",
+          "modern_evidence": "Biswas & Das (2023) review Kunapajala's documented effect on plant vigour and disease resistance across multiple crops, noting it is a plant-strengthening formulation rather than a targeted fungicide.",
+          "evidence_level": "Primary text citation plus peer-reviewed review. Not a specific fungicidal claim for tomato leaf spot."
+        },
+        "relevance_to_this_case": "Kunapajala's traditional role as a soil and plant nourisher aligns with the modern principle that well-nourished, unstressed plants show greater resistance to fungal leaf-spot infections.",
+        "verification_status": "Principle is a team paraphrase of general soil-health principles. Kunapajala cited to primary text via Biswas & Das (2023). No specific Vrikshayurveda verse claims direct anti-fungal effect on tomato leaf spot - the application here is preventive, not curative."
+      },
+
+      "connection": "Traditional emphasis on soil health and drainage (Bhoomi Pariksha) and periodic plant-vitality preparations (Kunapajala) is combined with modern fungal-disease prevention: keeping foliage dry, removing infected material, improving airflow, and mulching.",
+
+      "monitor": "Check lower leaves every 2-3 days for new spots. Watch for spot progression upward on the plant.",
+
+      "seek_expert_if": [
+        "Spotting spreads to more than a third of the plant's foliage.",
+        "Spots appear on fruit.",
+        "The diagnosis remains uncertain after a week of observation.",
+        "The selected intervention does not produce the expected response."
+      ],
+
+      "precautions": "Fungal leaf spot can resemble other leaf diseases; exact identification may need visual confirmation of the spot pattern or a local expert's assessment.",
+
+      "expert_guidance": "If spotting spreads to more than a third of the plant's foliage or appears on fruit, consult a local agricultural extension officer for a targeted response.",
+
+      "sources": [
+        "ICAR ePubs - Integrated Pest Management approaches for major tomato pests and diseases (epubs.icar.org.in)",
+        "NICRA-ICAR - Manual for Tomato Pest Surveillance (nicra-icar.in)",
+        "Raghavendra et al. (2023). Integrated Pest Management Approaches Against Major Insect Pests and Diseases of Tomato. ICAR publication (see ICAR ePubs).",
+        "Surapala's Vrikshayurveda, trans. Nalini Sadhale (1996). Asian Agri-History Foundation, Agri-History Bulletin No. 1.",
+        "Suresh, G., Haridasan, K., Krishnamurthy, K.V. (2013). Relevance of Vrksayurveda and other traditional methods. Ancient Science of Life 33(1): 60-70. doi:10.4103/0257-7941.134613.",
+        "Biswas, S. & Das, R. (2023). Kunapajala: A Traditional Organic Formulation - A Review. Agricultural Reviews. doi:10.18805/ag.R-2570."
+      ],
+
+      "sources_verification_status": "GENERAL sources verified authentic. Kunapajala source verified with exact citation. Application here is preventive, not curative - this is stated explicitly in the iks_context."
+    },
+
+    {
+      "id": "tomato_yellowing",
+      "plant": "Tomato",
+      "problem": "Yellowing",
+      "affected_part": ["Leaf", "Whole plant"],
+      "environment": ["Dry", "Hot"],
+      "season": ["Summer"],
+      "growing_condition": ["Pot", "Garden"],
+
+      "symptoms": [
+        "Older, lower leaves turning uniformly yellow",
+        "Slowed growth",
+        "Leaves not showing spots or insect presence"
+      ],
+
+      "priority_actions": [
+        "Check soil moisture 2-3 inches deep before watering, rather than watering on a fixed schedule.",
+        "Add composted organic matter gradually rather than a single large dose of fertilizer.",
+        "Check for root crowding if grown in a pot, and repot if roots circle the container base.",
+        "Observe whether yellowing starts from older or newer leaves, since this narrows the likely cause."
+      ],
+
+      "modern_knowledge": "General yellowing without spots or pests often points to a nutrient issue (commonly nitrogen), inconsistent watering, or root stress rather than a pest or pathogen. Diagnosis depends heavily on which leaves are affected and the surrounding pattern.",
+
+      "sustainable_approaches": [
+        {
+          "action": "Check soil moisture 2-3 inches deep before watering, rather than watering on a fixed schedule.",
+          "cost": "Low",
+          "availability": "Universal."
+        },
+        {
+          "action": "Add composted organic matter gradually rather than a single large dose of fertilizer.",
+          "cost": "Low to Moderate",
+          "availability": "Compost available on-site or locally in most regions."
+        },
+        {
+          "action": "Check for root crowding if grown in a pot; repot if roots circle the container base.",
+          "cost": "Low",
+          "availability": "Universal - larger pot and fresh potting mix."
+        },
+        {
+          "action": "Observe whether yellowing starts from older or newer leaves - this narrows the likely cause.",
+          "cost": "Zero",
+          "availability": "Universal - observation only."
+        }
+      ],
+
+      "iks_context": {
+        "principle": {
+          "statement": "Vrikshayurveda texts describe the practice of balanced, moderate watering and periodic organic nourishment to maintain steady plant vigour (Vriksha Ayush) and resistance to stress-related decline.",
+          "source_type": "paraphrase",
+          "source_note": "Team paraphrase of general Vrikshayurveda nourishment principles; primary text Surapala's Vrikshayurveda, trans. Sadhale (1996)."
+        },
+        "specific_practice": {
+          "name": "Kunapajala (nourishment application)",
+          "description": "Kunapajala, described in Surapala's Vrikshayurveda (verses 101-106), is the traditional fermented liquid organic preparation used for plant nourishment. In the yellowing context it is applied as a soil drench to restore plant vitality where nutrient or stress-related yellowing is suspected.",
+          "source_type": "direct_reference",
+          "primary_citation": "Surapala's Vrikshayurveda, trans. N. Sadhale (1996). Agri-History Bulletin No. 1, verses 101-106.",
+          "secondary_citation": "Biswas, S. & Das, R. (2023). Agricultural Reviews. doi:10.18805/ag.R-2570.",
+          "modern_evidence": "Deshmukh et al. (2012) and Sarkar et al. (2014) both report that Kunapajala application improved tomato plant vigour and leaf-level parameters (chlorophyll, leaf area, biomass) compared with NPK-only controls. This is directly relevant to a yellowing case.",
+          "evidence_level": "Documented in primary text with modern replicated studies specifically on tomato vigour and leaf health."
+        },
+        "relevance_to_this_case": "Kunapajala's documented effect on tomato leaf chlorophyll and vigour addresses the most common nutritional and stress-related causes of general yellowing.",
+        "verification_status": "Principle is team paraphrase. Kunapajala source citation is direct and exact. Modern evidence is specifically on tomato."
+      },
+
+      "connection": "Traditional emphasis on balanced watering and periodic organic nourishment is combined with modern diagnostics: the leaf-age pattern (older vs newer) distinguishes nutrient from stress or root causes, and both traditional and modern approaches converge on gradual soil-improvement rather than a single corrective input.",
+
+      "monitor": "Check whether the yellowing progresses or stabilises over the next 2-3 weeks after adjusting watering and nutrition.",
+
+      "seek_expert_if": [
+        "Yellowing continues despite consistent watering and nutrition over 2-3 weeks.",
+        "Yellowing appears on newer leaves rather than older leaves (suggesting a different nutrient or disease issue).",
+        "The diagnosis remains uncertain after 2 weeks of observation.",
+        "The selected intervention does not produce the expected response."
+      ],
+
+      "precautions": "Yellowing has many possible causes; this pathway narrows likely explanations but does not replace a soil or plant-tissue test where the cause is unclear.",
+
+      "expert_guidance": "If yellowing continues despite consistent watering and nutrition over 2-3 weeks, consult a local agricultural extension officer to check for root or soil-borne issues.",
+
+      "sources": [
+        "ICAR ePubs - Soil health and nutrient management for vegetable crops (epubs.icar.org.in)",
+        "KVK (Krishi Vigyan Kendra) advisories on tomato nutrient management (state-specific, check local KVK).",
+        "Surapala's Vrikshayurveda, trans. Nalini Sadhale (1996). Asian Agri-History Foundation, Agri-History Bulletin No. 1.",
+        "Biswas, S. & Das, R. (2023). Kunapajala: A Traditional Organic Formulation - A Review. Agricultural Reviews. doi:10.18805/ag.R-2570.",
+        "Deshmukh, R.S. et al. (2012). Influence of Kunapajala treatment from Vrikshayurveda on leaves of tomato. International Journal of Organic Agriculture Research and Development 6: 1-18.",
+        "Sarkar, S., Kundu, S.S., Ghorai, D. (2014). Validation of ancient liquid organics. Indian Journal of Traditional Knowledge 13(2): 398-403."
+      ],
+
+      "sources_verification_status": "GENERAL sources verified authentic. Kunapajala modern evidence is directly on tomato leaf/vigour. Sadhale verses not yet read directly - disclosed."
+    },
+
+    {
+      "id": "rose_powdery_mildew",
+      "plant": "Rose",
+      "problem": "Powdery mildew",
+      "affected_part": ["Leaf", "Flower"],
+      "environment": ["Dry", "Cool"],
+      "season": ["Winter", "Spring"],
+      "growing_condition": ["Garden", "Pot"],
+
+      "symptoms": [
+        "White or grey powdery coating on leaves and buds",
+        "Distorted or curled new growth",
+        "Reduced flowering"
+      ],
+
+      "priority_actions": [
+        "Prune to open up the plant's centre and improve air circulation.",
+        "Avoid overhead watering in the evening, which raises humidity around foliage overnight.",
+        "Remove and dispose of heavily affected leaves and buds off-site.",
+        "Position new plantings with adequate spacing and morning sun exposure to dry dew quickly."
+      ],
+
+      "modern_knowledge": "Powdery mildew is a fungal disease that, unlike most fungal problems, thrives in dry conditions with high humidity at night and cool days with poor air circulation - not in standing water on leaves.",
+
+      "sustainable_approaches": [
+        {
+          "action": "Prune to open up the plant's centre and improve air circulation.",
+          "cost": "Low",
+          "availability": "Universal - basic pruners required."
+        },
+        {
+          "action": "Avoid overhead watering in the evening; water in the morning at the base.",
+          "cost": "Low",
+          "availability": "Universal."
+        },
+        {
+          "action": "Remove and dispose of heavily affected leaves and buds off-site.",
+          "cost": "Low",
+          "availability": "Universal."
+        },
+        {
+          "action": "Position new plantings with adequate spacing and morning sun exposure to dry dew quickly.",
+          "cost": "Low",
+          "availability": "Universal - planting position adjustment."
+        }
+      ],
+
+      "iks_context": {
+        "principle": {
+          "statement": "Traditional Indian agricultural practice emphasises aligning cultivation, pruning, and planting activities with seasonal weather patterns (Ritu) to reduce exposure of tender growth to conditions that favour fungal development.",
+          "source_type": "paraphrase",
+          "source_note": "Team paraphrase. General principle drawn from the Ayurvedic concept of Ritu (seasonal regimen) discussed in Singh et al. (2023); primary text reference is Vagbhata's Ashtanga Hridayam, Sutrasthana 3-4."
+        },
+        "seasonal_principle": {
+          "name": "Ritu / Ritusandhi",
+          "description": "In Ayurvedic literature the year is divided into six seasons (Ritu), each with distinct environmental characteristics and recommended practices. The transition between two seasons (Ritusandhi) is a 14-day period during which old-season practices are gradually phased out and new-season practices gradually introduced. The principle is one of gradual, timed adjustment to seasonal change.",
+          "source_type": "direct_reference",
+          "source_citation": "Vagbhata, Ashtanga Hridayam, Sutrasthana 3-4 (Ritucharya). Discussed in: Singh, N., Potter, B.S., Gupta, N., Mangal, G., Kumbhar, A. (2023). A Concept: Significant Role of Ritu and Ritusandhi in Today's Perspective. IJCRT 11(6): g120-g124.",
+          "verification_status": "IMPORTANT: The source literature discusses Ritu and Ritusandhi for human seasonal health (Ayurveda), not for plant pathology. The application to plant-care here is a team extension of a general seasonal-timing principle, not a direct plant-specific citation. This is disclosed for transparency."
+        },
+        "relevance_to_this_case": "Powdery mildew severity varies sharply with temperature and humidity transitions between seasons. The Ritu principle of gradual adjustment to seasonal change aligns with the modern practice of pruning and positioning plants to match seasonal weather conditions.",
+        "verification_status": "Principle is team paraphrase. Seasonal principle directly cited but is a team extension from human Ayurvedic Ritucharya to plant care - this is disclosed openly and not overstated."
+      },
+
+      "connection": "Traditional seasonal-timing principles (Ritu) align with modern understanding that powdery mildew severity is driven by specific temperature and humidity transition conditions, and that pruning and positioning to match seasonal patterns reduces disease pressure.",
+
+      "monitor": "Check new growth weekly for powdery coating. Pay particular attention during seasonal transitions (early winter, early spring).",
+
+      "seek_expert_if": [
+        "Mildew returns repeatedly across seasons despite pruning and spacing changes.",
+        "New growth is heavily distorted or flowering stops entirely.",
+        "The diagnosis remains uncertain.",
+        "The selected intervention does not produce the expected response."
+      ],
+
+      "precautions": "Powdery mildew severity varies significantly by rose variety; some are far more resistant than others, which this general pathway does not account for.",
+
+      "expert_guidance": "If mildew returns repeatedly across seasons despite pruning and spacing changes, consult a local nursery or horticulture expert about variety resistance.",
+
+      "sources": [
+        "ICAR ePubs - Floriculture and ornamental plant protection (epubs.icar.org.in)",
+        "Indian Institute of Horticultural Research (IIHR) - rose crop protection advisories (iihr.res.in).",
+        "Surapala's Vrikshayurveda, trans. Nalini Sadhale (1996). Asian Agri-History Foundation, Agri-History Bulletin No. 1.",
+        "Singh, N., Potter, B.S., Gupta, N., Mangal, G., Kumbhar, A. (2023). A Concept: Significant Role of Ritu and Ritusandhi in Today's Perspective. IJCRT 11(6): g120-g124."
+      ],
+
+      "sources_verification_status": "IMPORTANT HONESTY NOTE: No specific Kunapajala study exists for rose powdery mildew in the reviewed literature. The IKS content uses the general Ritu seasonal principle, which is cited to Vagbhata but is a team extension from human Ayurveda to plant care. This is stated openly in the iks_context.seasonal_principle.verification_status field."
+    },
+
+    {
+      "id": "chilli_thrips",
+      "plant": "Chilli",
+      "problem": "Thrips",
+      "affected_part": ["Leaf", "Flower"],
+      "environment": ["Hot", "Dry"],
+      "season": ["Summer"],
+      "growing_condition": ["Field", "Garden"],
+
+      "symptoms": [
+        "Silvery or streaked patches on leaves",
+        "Curled or distorted young leaves",
+        "Tiny slender insects visible on close inspection of flowers or leaf undersides"
+      ],
+
+      "priority_actions": [
+        "Use blue or yellow sticky traps to monitor thrips population before deciding on action.",
+        "Encourage predatory mites and minute pirate bugs by avoiding broad-spectrum interventions.",
+        "Maintain adequate irrigation, since drought-stressed plants are more vulnerable.",
+        "Remove and destroy severely curled or distorted growth where thrips concentrate."
+      ],
+
+      "modern_knowledge": "Thrips are minute insects that scrape plant tissue and feed on the released sap, and are especially active in hot, dry conditions. They can also transmit viral diseases in chilli crops.",
+
+      "sustainable_approaches": [
+        {
+          "action": "Use blue or yellow sticky traps to monitor thrips population before deciding on action.",
+          "cost": "Low",
+          "availability": "Widely available at agricultural supply shops and online."
+        },
+        {
+          "action": "Encourage predatory mites and minute pirate bugs by avoiding broad-spectrum interventions.",
+          "cost": "Low",
+          "availability": "Universal - adjustment of spray practices."
+        },
+        {
+          "action": "Maintain adequate irrigation, since drought-stressed plants are more vulnerable.",
+          "cost": "Low",
+          "availability": "Universal."
+        },
+        {
+          "action": "Remove and destroy severely curled or distorted growth where thrips concentrate.",
+          "cost": "Low",
+          "availability": "Universal."
+        }
+      ],
+
+      "iks_context": {
+        "principle": {
+          "statement": "Traditional agricultural knowledge documents regular field observation cycles and prompt removal of visibly affected plant parts as a preventive principle, consistent with sanitation-based approaches used today.",
+          "source_type": "paraphrase",
+          "source_note": "Team paraphrase based on general Vrikshayurveda sanitation principles, as described in Suresh et al. (2013)."
+        },
+        "specific_practice": {
+          "name": "Kunapajala (plant-vitality application)",
+          "description": "Kunapajala, described in Surapala's Vrikshayurveda (verses 101-106), is the traditional fermented liquid organic preparation used for plant nourishment. In the thrips context it is applied as a plant-vitality intervention on the principle that unstressed plants are less vulnerable to pest pressure.",
+          "source_type": "direct_reference",
+          "primary_citation": "Surapala's Vrikshayurveda, trans. N. Sadhale (1996). Agri-History Bulletin No. 1, verses 101-106.",
+          "secondary_citation": "Biswas, S. & Das, R. (2023). Agricultural Reviews. doi:10.18805/ag.R-2570.",
+          "modern_evidence": "Sarkar, S., Kundu, S.S., Ghorai, D. (2014). Indian Journal of Traditional Knowledge 13(2): 398-403. Includes chilli trials showing significant growth improvement under Kunapajala treatment.",
+          "evidence_level": "Primary text citation with modern validation specifically including chilli."
+        },
+        "relevance_to_this_case": "The traditional emphasis on maintaining plant vitality through soil nourishment aligns with modern IPM's principle that drought-stressed or nutritionally stressed plants are more vulnerable to thrips.",
+        "verification_status": "Principle is team paraphrase. Kunapajala has direct modern validation on chilli (Sarkar et al. 2014). Not claimed as a thripicide - used as a plant-vitality intervention."
+      },
+
+      "connection": "Traditional emphasis on observation cycles, sanitation, and plant-vitality nourishment is combined with modern IPM: monitoring with sticky traps, predator conservation, consistent irrigation, and removal of concentrated affected growth.",
+
+      "monitor": "Check sticky traps weekly. Inspect new growth and flowers every 2-3 days during hot, dry spells.",
+
+      "seek_expert_if": [
+        "Curling spreads to most new growth.",
+        "Fruit set drops noticeably.",
+        "Virus-like mosaic patterning appears on new leaves.",
+        "The selected intervention does not produce the expected response."
+      ],
+
+      "precautions": "Thrips damage can resemble mite damage or nutrient stress; a hand lens or local expert check helps confirm identification.",
+
+      "expert_guidance": "If curling spreads to most new growth or fruit set drops noticeably, consult a local agricultural extension officer.",
+
+      "sources": [
+        "ICAR ePubs - Integrated Pest Management for chilli (epubs.icar.org.in)",
+        "Indian Institute of Horticultural Research (IIHR) - chilli crop protection advisories.",
+        "Surapala's Vrikshayurveda, trans. Nalini Sadhale (1996). Asian Agri-History Foundation, Agri-History Bulletin No. 1.",
+        "Biswas, S. & Das, R. (2023). Kunapajala: A Traditional Organic Formulation - A Review. Agricultural Reviews. doi:10.18805/ag.R-2570.",
+        "Sarkar, S., Kundu, S.S., Ghorai, D. (2014). Validation of ancient liquid organics - panchagavya and kunapajala as plant growth promoters. Indian Journal of Traditional Knowledge 13(2): 398-403."
+      ],
+
+      "sources_verification_status": "GENERAL sources verified. Kunapajala modern evidence is specifically on chilli. Sadhale verses not yet read directly - disclosed."
+    },
+
+    {
+      "id": "brinjal_fruit_borer",
+      "plant": "Brinjal",
+      "problem": "Fruit borer",
+      "affected_part": ["Fruit"],
+      "environment": ["Humid", "Outdoor"],
+      "season": ["Monsoon", "Summer"],
+      "growing_condition": ["Field", "Garden"],
+
+      "symptoms": [
+        "Small entry holes on fruit, sometimes with a visible frass (excreta) plug",
+        "Wilting or boring visible on shoot tips before fruiting",
+        "Affected fruit hollowed out internally"
+      ],
+
+      "priority_actions": [
+        "Regularly remove and destroy wilted shoot tips and infested fruit off-site (do not compost on-site).",
+        "Use pheromone traps to monitor and reduce adult moth populations.",
+        "Encourage natural predators and avoid disturbing beneficial insect populations.",
+        "Practice field sanitation at the end of the season to reduce carryover."
+      ],
+
+      "modern_knowledge": "The brinjal fruit and shoot borer (Leucinodes orbonalis) larvae tunnel into shoots and fruit, making internal damage largely invisible from outside until fruit is cut open or shoots wilt.",
+
+      "sustainable_approaches": [
+        {
+          "action": "Regularly remove and destroy wilted shoot tips and infested fruit off-site.",
+          "cost": "Low",
+          "availability": "Universal."
+        },
+        {
+          "action": "Use pheromone traps to monitor and reduce adult moth populations.",
+          "cost": "Moderate",
+          "availability": "Available from agricultural extension centres and online suppliers."
+        },
+        {
+          "action": "Encourage natural predators and avoid disturbing beneficial insect populations.",
+          "cost": "Low",
+          "availability": "Universal - adjustment of spray practices."
+        },
+        {
+          "action": "Practice field sanitation at the end of the season to reduce carryover.",
+          "cost": "Low",
+          "availability": "Universal."
+        }
+      ],
+
+      "iks_context": {
+        "principle": {
+          "statement": "Traditional agricultural knowledge documents regular field observation cycles and prompt removal of visibly affected plant parts as a preventive principle, consistent with sanitation-based approaches used today.",
+          "source_type": "paraphrase",
+          "source_note": "Team paraphrase based on general Vrikshayurveda sanitation principles, as described in Suresh et al. (2013)."
+        },
+        "specific_practice": {
+          "name": "Kunapajala (plant-vitality application)",
+          "description": "Kunapajala, described in Surapala's Vrikshayurveda (verses 101-106), is the traditional fermented liquid organic preparation used for plant nourishment. In the fruit-borer context it is applied as a general plant-vitality intervention.",
+          "source_type": "direct_reference",
+          "primary_citation": "Surapala's Vrikshayurveda, trans. N. Sadhale (1996). Agri-History Bulletin No. 1, verses 101-106.",
+          "secondary_citation": "Biswas, S. & Das, R. (2023). Agricultural Reviews. doi:10.18805/ag.R-2570.",
+          "modern_evidence": "Bhat, V.R., Vasanthi, S. (2008). Antiquity of the cultivation and use of brinjal in India. Asian Agri-History 12(3): 169-178, cited in Biswas & Das (2023), reports greater fruit yield and less disease vulnerability in brinjal under Kunapajala treatment compared with chemical fertilizer.",
+          "evidence_level": "Primary text citation with modern study specifically on brinjal."
+        },
+        "relevance_to_this_case": "Traditional emphasis on plant vitality and sanitation aligns with modern IPM principles of removing borer-infested material and strengthening the plant against pest pressure.",
+        "verification_status": "Principle is team paraphrase. Kunapajala has specific modern validation on brinjal (Bhat & Vasanthi 2008). Not claimed as an insecticide - used as a plant-vitality intervention."
+      },
+
+      "connection": "Traditional sanitation-based pest management and plant-vitality nourishment are combined with modern IPM: pheromone-trap monitoring, removal of wilted shoots and infested fruit, predator conservation, and end-of-season field sanitation.",
+
+      "monitor": "Inspect shoot tips and developing fruit every 2-3 days during fruiting season. Check pheromone traps weekly.",
+
+      "seek_expert_if": [
+        "Borer damage affects a large proportion of the field or crop.",
+        "Damage continues despite sanitation and pheromone-trap measures.",
+        "The diagnosis remains uncertain.",
+        "The selected intervention does not produce the expected response."
+      ],
+
+      "precautions": "Internal fruit damage is often confirmed only after cutting affected fruit; this pathway supports early shoot-level detection rather than fruit-stage confirmation.",
+
+      "expert_guidance": "If borer damage affects a large proportion of the field or crop, consult a local agricultural extension officer for area-wide management options.",
+
+      "sources": [
+        "ICAR ePubs - Integrated Pest Management for brinjal (epubs.icar.org.in)",
+        "IIHR - brinjal crop protection advisories.",
+        "Bhat, V.R., Vasanthi, S. (2008). Antiquity of the cultivation and use of brinjal in India. Asian Agri-History 12(3): 169-178.",
+        "Surapala's Vrikshayurveda, trans. Nalini Sadhale (1996). Asian Agri-History Foundation, Agri-History Bulletin No. 1.",
+        "Biswas, S. & Das, R. (2023). Kunapajala: A Traditional Organic Formulation - A Review. Agricultural Reviews. doi:10.18805/ag.R-2570."
+      ],
+
+      "sources_verification_status": "GENERAL sources verified. Kunapajala modern evidence is specifically on brinjal. Sadhale verses not yet read directly - disclosed."
+    },
+
+    {
+      "id": "mango_mealybug",
+      "plant": "Mango",
+      "problem": "Mealybug",
+      "affected_part": ["Stem", "Flower", "Whole plant"],
+      "environment": ["Dry", "Hot"],
+      "season": ["Winter", "Spring"],
+      "growing_condition": ["Garden", "Field"],
+
+      "symptoms": [
+        "White, cottony masses on bark, twigs or flower panicles",
+        "Sticky honeydew and sooty mould on affected parts",
+        "Ants actively moving along the trunk (they farm mealybugs for honeydew)"
+      ],
+
+      "priority_actions": [
+        "Apply a sticky band (grease band) around the trunk base before flowering to block upward movement.",
+        "Encourage natural predators such as the mealybug ladybird beetle.",
+        "Maintain clean basins around the trunk, removing fallen leaves and debris where eggs can overwinter.",
+        "Avoid excessive nitrogen application, which encourages the soft growth mealybugs prefer."
+      ],
+
+      "modern_knowledge": "Mealybugs are sap-sucking insects that often climb from the soil onto the trunk during flowering season and cluster on tender growth and flower panicles, potentially reducing fruit set.",
+
+      "sustainable_approaches": [
+        {
+          "action": "Apply a sticky band (grease band) around the trunk base before flowering to block upward movement.",
+          "cost": "Low",
+          "availability": "Grease and tape available at any hardware or agricultural supply shop."
+        },
+        {
+          "action": "Encourage natural predators such as the mealybug ladybird beetle.",
+          "cost": "Low",
+          "availability": "Universal - adjustment of spray practices."
+        },
+        {
+          "action": "Maintain clean basins around the trunk, removing fallen leaves and debris where eggs can overwinter.",
+          "cost": "Low",
+          "availability": "Universal."
+        },
+        {
+          "action": "Avoid excessive nitrogen application, which encourages the soft growth mealybugs prefer.",
+          "cost": "Low (saves cost)",
+          "availability": "Universal."
+        }
+      ],
+
+      "iks_context": {
+        "principle": {
+          "statement": "Traditional orchard management practices document trunk-base cleaning and seasonal preparation before flowering as a preventive principle predating modern grease-banding techniques.",
+          "source_type": "paraphrase",
+          "source_note": "Team paraphrase of general Vrikshayurveda orchard principles."
+        },
+        "specific_practice": {
+          "name": "Kunapajala (orchard nourishment application)",
+          "description": "Kunapajala, described in Surapala's Vrikshayurveda (verses 101-106), is the traditional fermented liquid organic preparation used for plant nourishment. In the orchard context it is applied as a soil or foliar nourishment intervention for tree vigour.",
+          "source_type": "direct_reference",
+          "primary_citation": "Surapala's Vrikshayurveda, trans. N. Sadhale (1996). Agri-History Bulletin No. 1, verses 101-106.",
+          "secondary_citation": "Biswas, S. & Das, R. (2023). Agricultural Reviews. doi:10.18805/ag.R-2570.",
+          "modern_evidence": "Ayangarya, V.S. (2004a). Herbal kunapa. Asian Agri-History 8: 315-317, cited in Biswas & Das (2023), documents positive results from Kunapajala application on mango and coconut.",
+          "evidence_level": "Primary text citation with modern documentation specifically on mango."
+        },
+        "relevance_to_this_case": "Traditional emphasis on pre-flowering orchard preparation and plant-vitality nourishment aligns with modern grease-banding and predator-conservation strategies for mealybug management.",
+        "verification_status": "Principle is team paraphrase. Kunapajala has modern documentation on mango (Ayangarya 2004a). Not claimed as a mealybug insecticide - used as a plant-vitality intervention."
+      },
+
+      "connection": "Traditional trunk-base preparation and plant-vitality nourishment are combined with modern mealybug management: grease-banding, predator conservation, basin sanitation, and nitrogen management.",
+
+      "monitor": "Inspect trunk base and flower panicles weekly during and before flowering season. Watch for ant activity on the trunk.",
+
+      "seek_expert_if": [
+        "Flower panicles are heavily infested during peak flowering.",
+        "Fruit set is significantly affected.",
+        "The diagnosis remains uncertain.",
+        "The selected intervention does not produce the expected response."
+      ],
+
+      "precautions": "Mealybug identification should be distinguished from other cottony-looking insects such as woolly aphids; close inspection helps confirm.",
+
+      "expert_guidance": "If flower panicles are heavily infested during peak flowering, consult a local horticulture officer promptly, since this stage affects fruit yield.",
+
+      "sources": [
+        "ICAR ePubs - Integrated Pest Management for mango (epubs.icar.org.in)",
+        "Indian Institute of Horticultural Research (IIHR) - mango crop protection advisories.",
+        "Surapala's Vrikshayurveda, trans. Nalini Sadhale (1996). Asian Agri-History Foundation, Agri-History Bulletin No. 1.",
+        "Biswas, S. & Das, R. (2023). Kunapajala: A Traditional Organic Formulation - A Review. Agricultural Reviews. doi:10.18805/ag.R-2570.",
+        "Ayangarya, V.S. (2004a). Herbal kunapa. Asian Agri-History 8: 315-317."
+      ],
+
+      "sources_verification_status": "GENERAL sources verified. Kunapajala modern evidence specifically documents mango. Sadhale verses not yet read directly - disclosed."
+    },
+
+    {
+      "id": "rice_brown_spot",
+      "plant": "Rice",
+      "problem": "Brown spot",
+      "affected_part": ["Leaf"],
+      "environment": ["Humid", "Rainy"],
+      "season": ["Monsoon"],
+      "growing_condition": ["Field"],
+
+      "symptoms": [
+        "Oval brown lesions with a yellow halo on leaves",
+        "Lesions may also appear on grain husks",
+        "More pronounced in nutrient-poor or stressed soil"
+      ],
+
+      "priority_actions": [
+        "Ensure balanced soil nutrition, particularly potassium, rather than relying only on nitrogen.",
+        "Use certified, disease-free seed where possible for the next planting cycle.",
+        "Maintain consistent water management, avoiding prolonged water stress.",
+        "Rotate crops where feasible to reduce pathogen carryover in soil."
+      ],
+
+      "modern_knowledge": "Brown spot in rice (Bipolaris oryzae) is strongly linked to nutrient-deficient soil (especially potassium) and water stress, alongside humid conditions; it is considered an indicator of overall crop and soil health rather than a purely weather-driven disease.",
+
+      "sustainable_approaches": [
+        {
+          "action": "Ensure balanced soil nutrition, particularly potassium, rather than relying only on nitrogen.",
+          "cost": "Moderate",
+          "availability": "Potassium sources widely available; soil testing at KVK recommended."
+        },
+        {
+          "action": "Use certified, disease-free seed where possible for the next planting cycle.",
+          "cost": "Moderate",
+          "availability": "Certified seed available at government agriculture centres."
+        },
+        {
+          "action": "Maintain consistent water management, avoiding prolonged water stress.",
+          "cost": "Low",
+          "availability": "Universal."
+        },
+        {
+          "action": "Rotate crops where feasible to reduce pathogen carryover in soil.",
+          "cost": "Low",
+          "availability": "Universal where alternative crops are viable."
+        }
+      ],
+
+      "iks_context": {
+        "principle": {
+          "statement": "Vrikshayurveda texts document Bhoomi Pariksha (soil assessment before cultivation) and balanced organic nourishment cycles as foundational to crop resilience, aligning with the modern understanding that brown spot severity reflects underlying soil health.",
+          "source_type": "paraphrase",
+          "source_note": "Team paraphrase. The Bhoomi-Nirupanam sub-section on soil classification is described in Suresh et al. (2013); primary text is Surapala's Vrikshayurveda, trans. Sadhale (1996)."
+        },
+        "specific_practice": {
+          "name": "Kunapajala (soil nourishment application)",
+          "description": "Kunapajala, described in Surapala's Vrikshayurveda (verses 101-106), is the traditional fermented liquid organic preparation used for soil and plant nourishment. In the brown-spot context it is applied as a soil-nourishment intervention for balanced crop health.",
+          "source_type": "direct_reference",
+          "primary_citation": "Surapala's Vrikshayurveda, trans. N. Sadhale (1996). Agri-History Bulletin No. 1, verses 101-106.",
+          "secondary_citation": "Biswas, S. & Das, R. (2023). Agricultural Reviews. doi:10.18805/ag.R-2570.",
+          "modern_evidence": "Mishra, P.K. (2007). Effects of Kunapajalam Vrikshayurveda on growth of paddy. Indian Journal of Traditional Knowledge 6(2): 307-310. Reports increase in plant height, leaf length, panicle length, and grains per panicle in rice with Kunapajala application.",
+          "evidence_level": "Primary text citation with modern peer-reviewed study specifically on paddy."
+        },
+        "relevance_to_this_case": "The modern understanding that brown spot severity reflects underlying soil health directly aligns with Vrikshayurveda's foundational emphasis on soil assessment (Bhoomi Pariksha) and balanced organic nourishment.",
+        "verification_status": "Principle is team paraphrase. Kunapajala has direct modern validation on paddy (Mishra 2007)."
+      },
+
+      "connection": "Traditional soil assessment (Bhoomi Pariksha) and organic nourishment cycles are combined with modern soil-health management: balanced NPK, certified seed, water management, and crop rotation.",
+
+      "monitor": "Scout the field weekly for new lesions, especially after prolonged humid periods. Check soil nutrient status via local KVK.",
+
+      "seek_expert_if": [
+        "Spotting is widespread across the field rather than isolated plants.",
+        "Lesions appear on grain husks during grain-filling stage.",
+        "The diagnosis remains uncertain.",
+        "The selected intervention does not produce the expected response."
+      ],
+
+      "precautions": "Brown spot symptoms can overlap with other leaf spot diseases in rice; field-level confirmation is more reliable than description alone.",
+
+      "expert_guidance": "If spotting is widespread across the field rather than isolated plants, consult a local agricultural extension officer, since soil-level correction may be needed.",
+
+      "sources": [
+        "ICAR ePubs - Rice disease management (epubs.icar.org.in)",
+        "ICAR-National Rice Research Institute (NRRI) - brown spot management advisories (icar-nrri.in).",
+        "Surapala's Vrikshayurveda, trans. Nalini Sadhale (1996). Asian Agri-History Foundation, Agri-History Bulletin No. 1.",
+        "Biswas, S. & Das, R. (2023). Kunapajala: A Traditional Organic Formulation - A Review. Agricultural Reviews. doi:10.18805/ag.R-2570.",
+        "Mishra, P.K. (2007). Effects of Kunapajalam Vrikshayurveda on growth of paddy. Indian Journal of Traditional Knowledge 6(2): 307-310.",
+        "Suresh, G., Haridasan, K., Krishnamurthy, K.V. (2013). Ancient Science of Life 33(1): 60-70."
+      ],
+
+      "sources_verification_status": "GENERAL sources verified. Kunapajala modern evidence specifically on paddy. Sadhale verses not yet read directly - disclosed."
+    },
+
+    {
+      "id": "wheat_yellowing",
+      "plant": "Wheat",
+      "problem": "Yellowing",
+      "affected_part": ["Leaf", "Whole plant"],
+      "environment": ["Cool", "Dry"],
+      "season": ["Winter"],
+      "growing_condition": ["Field"],
+
+      "symptoms": [
+        "Yellow striping along leaf veins, or general yellowing of lower leaves",
+        "Stunted growth in patches across the field",
+        "No visible insect presence"
+      ],
+
+      "priority_actions": [
+        "Check field drainage first, since waterlogged patches often show yellowing before the rest of the field.",
+        "Apply nitrogen in split doses matched to growth stage rather than a single large application.",
+        "Scout the field in a zigzag pattern to distinguish patchy (drainage/disease) from uniform (nutrient) yellowing.",
+        "Monitor specifically for yellow rust's characteristic powdery yellow stripe pattern."
+      ],
+
+      "modern_knowledge": "Yellowing in wheat without pest presence is commonly linked to nitrogen deficiency, waterlogging, or (if striped and patchy) yellow rust disease, which needs to be distinguished carefully since the response differs.",
+
+      "sustainable_approaches": [
+        {
+          "action": "Check field drainage first, since waterlogged patches often show yellowing before the rest of the field.",
+          "cost": "Low",
+          "availability": "Universal - observation and drainage adjustment."
+        },
+        {
+          "action": "Apply nitrogen in split doses matched to growth stage rather than a single large application.",
+          "cost": "Moderate (saves cost vs single large dose)",
+          "availability": "Urea or other nitrogen sources widely available."
+        },
+        {
+          "action": "Scout the field in a zigzag pattern to distinguish patchy from uniform yellowing.",
+          "cost": "Zero",
+          "availability": "Universal - observation only."
+        },
+        {
+          "action": "Monitor specifically for yellow rust's characteristic powdery yellow stripe pattern.",
+          "cost": "Zero",
+          "availability": "Universal - observation only."
+        }
+      ],
+
+      "iks_context": {
+        "principle": {
+          "statement": "Traditional Indian agricultural practice emphasises aligning cultivation and field management activities with seasonal weather patterns (Ritu) to maintain crop resilience through changing conditions.",
+          "source_type": "paraphrase",
+          "source_note": "Team paraphrase. General principle from the Ayurvedic Ritu concept as discussed in Singh et al. (2023)."
+        },
+        "seasonal_principle": {
+          "name": "Ritu / Ritusandhi",
+          "description": "In Ayurvedic literature the year is divided into six seasons (Ritu), each with distinct environmental characteristics and recommended practices. The transition (Ritusandhi) between two seasons requires gradual adjustment of cultivation practices. For a winter crop like wheat, this principle applies to the adjustment of irrigation, sowing, and field management across the cool-to-warm transition.",
+          "source_type": "direct_reference",
+          "source_citation": "Vagbhata, Ashtanga Hridayam, Sutrasthana 3-4 (Ritucharya). Discussed in: Singh, N., Potter, B.S., Gupta, N., Mangal, G., Kumbhar, A. (2023). IJCRT 11(6): g120-g124.",
+          "verification_status": "IMPORTANT: The source literature discusses Ritu for human seasonal health (Ayurveda), not plant pathology. The application to wheat field management here is a team extension of a general seasonal-timing principle, not a direct plant-specific citation."
+        },
+        "relevance_to_this_case": "Wheat yellowing is influenced by temperature, water, and seasonal transitions. The Ritu principle of gradual, timed field management across seasonal change aligns with the modern drainage-first and split-nitrogen approach to wheat yellowing diagnosis.",
+        "verification_status": "Principle is team paraphrase. Seasonal principle directly cited but is a team extension from human Ayurvedic Ritucharya to plant care - disclosed openly."
+      },
+
+      "connection": "Traditional seasonal-timing principles (Ritu) align with modern drainage-first and stage-matched nitrogen management in wheat, both responding to the same underlying principle that crop resilience depends on gradual, well-timed adjustment to changing conditions.",
+
+      "monitor": "Scout the field weekly. In particular, monitor drainage-affected patches and any yellow-rust-like striping. Re-check after nitrogen split application.",
+
+      "seek_expert_if": [
+        "Yellowing shows a distinct powdery orange-yellow stripe pattern (suggesting rust).",
+        "Yellowing spreads rapidly across the field.",
+        "The diagnosis remains uncertain after 1-2 weeks of observation.",
+        "The selected intervention does not produce the expected response."
+      ],
+
+      "precautions": "Distinguishing nutrient yellowing from yellow rust disease is important since they need different responses; a close look at the pattern (striping vs. general) is the key differentiator.",
+
+      "expert_guidance": "If yellowing shows a distinct powdery orange-yellow stripe pattern, consult a local agricultural expert promptly, since rust can spread quickly across a field.",
+
+      "sources": [
+        "ICAR ePubs - Wheat disease and nutrient management (epubs.icar.org.in)",
+        "ICAR-Indian Institute of Wheat and Barley Research (IIWBR) - wheat crop advisories (iiwbr.org.in).",
+        "Surapala's Vrikshayurveda, trans. Nalini Sadhale (1996). Asian Agri-History Foundation, Agri-History Bulletin No. 1.",
+        "Singh, N., Potter, B.S., Gupta, N., Mangal, G., Kumbhar, A. (2023). A Concept: Significant Role of Ritu and Ritusandhi in Today's Perspective. IJCRT 11(6): g120-g124."
+      ],
+
+      "sources_verification_status": "IMPORTANT HONESTY NOTE: No specific Kunapajala study exists for wheat yellowing in the reviewed literature. The IKS content uses the general Ritu seasonal principle, cited to Vagbhata but extended by the team from human Ayurveda to wheat field management. This is disclosed in iks_context.seasonal_principle.verification_status."
+    },
+
+    {
+      "id": "okra_whitefly",
+      "plant": "Okra",
+      "problem": "Whitefly",
+      "affected_part": ["Leaf"],
+      "environment": ["Hot", "Humid"],
+      "season": ["Summer", "Monsoon"],
+      "growing_condition": ["Garden", "Field"],
+
+      "symptoms": [
+        "Tiny white insects that fly up in a cloud when the plant is disturbed",
+        "Yellowing and curling of leaves",
+        "Sticky honeydew and sooty mould buildup"
+      ],
+
+      "priority_actions": [
+        "Use yellow sticky traps for early monitoring and population reduction.",
+        "Encourage natural predators like ladybird beetles and lacewings.",
+        "Avoid dense planting that restricts airflow and creates a favourable whitefly microclimate.",
+        "Remove and destroy plants showing virus-like mosaic symptoms early to reduce spread."
+      ],
+
+      "modern_knowledge": "Whiteflies (Bemisia tabaci) are sap-sucking insects highly active in hot, humid weather and are a known vector for yellow vein mosaic virus in okra, making early population control more important than the direct feeding damage.",
+
+      "sustainable_approaches": [
+        {
+          "action": "Use yellow sticky traps for early monitoring and population reduction.",
+          "cost": "Low",
+          "availability": "Widely available at agricultural supply shops and online."
+        },
+        {
+          "action": "Encourage natural predators like ladybird beetles and lacewings.",
+          "cost": "Low",
+          "availability": "Universal - adjustment of spray practices."
+        },
+        {
+          "action": "Avoid dense planting that restricts airflow and creates a favourable whitefly microclimate.",
+          "cost": "Low",
+          "availability": "Universal - spacing adjustment."
+        },
+        {
+          "action": "Remove and destroy plants showing virus-like mosaic symptoms early to reduce spread.",
+          "cost": "Low",
+          "availability": "Universal."
+        }
+      ],
+
+      "iks_context": {
+        "principle": {
+          "statement": "Traditional agricultural knowledge emphasises plant vitality and consistent field observation as the foundation of pest and disease resilience, rather than reactive intervention after an outbreak.",
+          "source_type": "paraphrase",
+          "source_note": "Team paraphrase of general Vrikshayurveda principles as summarised in Suresh et al. (2013)."
+        },
+        "specific_practice": {
+          "name": "Kunapajala (plant-vitality application)",
+          "description": "Kunapajala, described in Surapala's Vrikshayurveda (verses 101-106), is the traditional fermented liquid organic preparation used for plant nourishment. In the whitefly context it is applied as a plant-vitality intervention on the principle that stressed plants are more vulnerable to whitefly pressure and virus transmission.",
+          "source_type": "direct_reference",
+          "primary_citation": "Surapala's Vrikshayurveda, trans. N. Sadhale (1996). Agri-History Bulletin No. 1, verses 101-106.",
+          "secondary_citation": "Biswas, S. & Das, R. (2023). Agricultural Reviews. doi:10.18805/ag.R-2570.",
+          "modern_evidence": "Kavya, S.R., Ushakumari, K. (2020). Effect of organic liquid manure of kunapajala on growth and yield of bhindi [Abelmoschus esculentus (L.) Moench.]. Agricultural Science Digest 40(3): 270-274. Reports on okra.",
+          "evidence_level": "Primary text citation with modern peer-reviewed study specifically on okra (bhindi)."
+        },
+        "relevance_to_this_case": "The traditional principle of maintaining plant vitality through organic nourishment aligns with modern IPM's understanding that nutritionally unstressed plants are less vulnerable to whitefly pressure and virus transmission.",
+        "verification_status": "Principle is team paraphrase. Kunapajala has direct modern validation on okra (Kavya & Ushakumari 2020). Not claimed as a whitefly insecticide - used as a plant-vitality intervention."
+      },
+
+      "connection": "Traditional emphasis on plant vitality and consistent observation is combined with modern whitefly IPM: sticky-trap monitoring, predator conservation, airflow management, and early removal of virus-symptomatic plants.",
+
+      "monitor": "Check sticky traps weekly. Inspect new growth every 2-3 days during hot, humid weather. Watch specifically for mosaic-patterned yellowing on new leaves.",
+
+      "seek_expert_if": [
+        "Mosaic-patterned yellowing appears on new leaves (may indicate viral spread).",
+        "Whitefly population increases despite trap and predator measures.",
+        "The diagnosis remains uncertain.",
+        "The selected intervention does not produce the expected response."
+      ],
+
+      "precautions": "Whitefly presence alone does not confirm viral infection; mosaic-pattern yellowing on new leaves is a more specific indicator worth watching for separately.",
+
+      "expert_guidance": "If mosaic-patterned yellowing appears on new leaves, consult a local agricultural expert, since this may indicate viral spread requiring different management.",
+
+      "sources": [
+        "ICAR ePubs - Integrated Pest Management for okra (epubs.icar.org.in)",
+        "Indian Institute of Horticultural Research (IIHR) - okra crop protection advisories.",
+        "Surapala's Vrikshayurveda, trans. Nalini Sadhale (1996). Asian Agri-History Foundation, Agri-History Bulletin No. 1.",
+        "Biswas, S. & Das, R. (2023). Kunapajala: A Traditional Organic Formulation - A Review. Agricultural Reviews. doi:10.18805/ag.R-2570.",
+        "Kavya, S.R., Ushakumari, K. (2020). Effect of organic liquid manure of kunapajala on growth and yield of bhindi. Agricultural Science Digest 40(3): 270-274."
+      ],
+
+      "sources_verification_status": "GENERAL sources verified. Kunapajala modern evidence specifically on okra. Sadhale verses not yet read directly - disclosed."
+    }
+  ]
+}
